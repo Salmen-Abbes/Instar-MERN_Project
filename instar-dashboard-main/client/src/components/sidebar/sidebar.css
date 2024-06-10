@@ -1,0 +1,89 @@
+body {
+    background-color: #EDF5FF; /* Change main background color */
+}
+
+
+.sidebar {
+    width: 290px;
+    height: 1050px; 
+    min-height: 100vh;
+    background-color:  #3b73e4;
+    border-bottom-left-radius: 0%;
+    border-top-right-radius: 0%;
+    float: left;
+}
+
+.top {
+    display: flex;
+    height: 120px;
+    align-items: center;
+    justify-content: center;
+}
+img {
+    width: 204px;
+    height: 204px;
+    top: 50px;
+    left: 54px;
+    margin-top:230px;
+  }
+
+  
+
+.center {
+    margin-top: 0px;
+    color: #EDF5FF;
+    padding-left: 40px;
+    padding-top: 180px;
+    margin: 0px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: -5px;
+}
+
+li {
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 24px; 
+    transition: 0.2s ;
+}
+
+li span {
+    padding-left: 20px;
+    
+}
+
+li:hover {
+    background-color: #EDF5FF;
+    color: #242529;
+    border-radius: 100px 10px 10px 100px;
+}
+
+.bottom {
+    margin-top: 0px;
+    color:  #EDF5FF;
+    padding-left: 20px;
+    margin-left: 30px;
+    margin-top: 50px;
+    padding: 20px;
+    cursor: pointer;
+    font-size: 24px;
+    transition: 0.2s ;
+
+}
+
+.bottom:hover {
+    background-color: #EDF5FF;
+    color: #242529;
+    border-radius: 100px 10px 10px 100px;
+}
+.sidebar a {
+    color: inherit; /* Use the default text color */
+    text-decoration: none; /* Remove underline */
+  }
+  
+

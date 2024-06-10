@@ -1,0 +1,444 @@
+ /* Style de cadre 1 */
+ .tile-container.first-container {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 240px;
+  height: 130px;
+  position: absolute; 
+  top: 100px; 
+  left: 319px; 
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+/* Style de cadre 2 */
+.tile-container.second-container {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 240px;
+  height: 130px;
+  position: absolute; 
+  top: 100px;
+  left: 620px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px; 
+}
+/* Style de cadre 3 */
+.tile-container.third-container {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 270px;
+  height: 330px;
+  position: absolute; 
+  top: 100px;  
+  left: 945px; 
+  border-radius: 10px;
+}
+/* Style de cadre 4 */
+.tile-container.fourth-container {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 540px;
+  height: 330px;
+  position: absolute; 
+  top: 320px; 
+  left: 319px; 
+  border-radius: 10px;
+}
+/* Style de cadre 6 */
+.tile-container.sixth-container {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 95px;
+  height: 130px;
+  position: absolute;
+  top: 520px; 
+  left: 1120px; 
+  border-radius: 10px;
+
+}
+/* Style de cadre 7 */
+.tile-container.seventh-container {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 95px;
+  height: 130px;
+  position: absolute; 
+  top: 520px; 
+  left: 945px; 
+  border-radius: 10px;
+}
+/* Style de cadre 8 */
+.tile-container.eighth-container {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 540px;
+  height: 120px;
+  position: absolute; 
+  top: 740px; 
+  left: 320px; 
+  border-radius: 10px;
+}
+/* Style de cadre 9 */
+.tile-container.ninth-container {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 95px;
+  height: 120px;
+  position: absolute;
+  top: 740px;
+  left: 945px;
+  border-radius: 10px;
+}
+/* Style de cadre 10 */
+.tile-container.tenth-container {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 95px;
+  height: 120px;
+  position: absolute; 
+  top: 740px;
+  left: 1119px; 
+  border-radius: 10px;
+}
+/* Style de cadre 11 */
+.tile-container.eleventh-container {
+  background-color: #ffffff;
+  padding: 25px;
+  width: 190px;
+  height: 10px;
+  position: absolute; 
+  top: 420px; 
+  left: 645px; 
+  border-radius: 10px;
+  margin-top: 40px;
+  border-radius: 10px;
+}
+/* Style de cadre 13 */
+.tile-container.thirteenth-container {
+  background-color: #ffffff;
+  padding: 25px;
+  width: 190px;
+  height: 10px;
+  position: absolute; 
+  top: 590px; 
+  left: 645px; 
+  border-radius: 10px;
+  margin-top: 40px;
+  border-radius: 10px;
+}
+/* Style pour le conteneur de l'histogramme */
+.bar-chart {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  height: 50px;
+  margin-top: 50px;
+}
+/* Style pour les barres de l'histogramme */
+.bar {
+  width: 20px; 
+  background-color: #007bff; 
+  text-align: center;
+  border-radius: 5px; 
+}
+/* Style pour les jours dans l'histogramme */
+.day-label {
+  font-size: 12px; 
+  color: #333; 
+  margin-top: 5px;  
+  margin-bottom: -20px; 
+  display: block; 
+  position: relative;
+  left: -15px; 
+}
+
+/* Dropdown dans le cadre 1 */
+.statistics-container1 .dropdown {
+  position: relative;
+  display: inline-block;
+}
+/* Positionnement du bouton "dropbtn" */
+.statistics-container1 .dropbtn {
+  position: relative; 
+  top: 18px;
+  right: -270px; 
+  margin-top: 85px;
+  background-color: #424242;
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+/* Contenu du dropdown (masqué par défaut) */
+.statistics-container1 .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ebeaea;
+  right: 285px; 
+  margin-top: -30px;
+  left: 195px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  top: calc(100% + 20px); 
+  width: 120px; 
+  min-height: 20px; 
+  padding: 1px; 
+  cursor: pointer;
+}
+/* Contenu du dropdown lorsqu'il est ouvert */
+.statistics-container1 .dropdown:hover .dropdown-content {
+  display: block;
+}
+/* Styles pour les liens dans le dropdown */
+.statistics-container1 .dropdown-content span {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-color: #333;
+}
+/* Changement de couleur au survol des liens */
+.statistics-container1 .dropdown-content span:hover {
+  background-color: #777777;
+}
+/* Style pour l'élément h8 dans le container 4 */
+.tile-container.tile-container.first-container h9 {
+  font-size: 20px; 
+  color: #1b1b1b; 
+  font-weight: 600;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+  text-align: center; 
+  margin-bottom: 20px; 
+}
+/* Style pour l'élément h8 dans le container 2 */
+.tile-container.tile-container.second-container h8 {
+  font-size: 20px; 
+  color: #1b1b1b; 
+  font-weight: 600;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+  text-align: center; 
+  margin-bottom: 20px; 
+}
+/* Assurez-vous que ce sélecteur est correctement appliqué à l'élément img */
+.sales-icon {
+  width: 33px; /* Ajustez la largeur selon vos besoins */
+  background-color: #ec2828;
+  border-radius: 5px;
+  height: 33px; /* Ajustez la hauteur selon vos besoins */
+  margin-left: -25px; /* Ajustez cette valeur pour déplacer l'icône horizontalement */
+  margin-top: 10px; /* Ajustez cette valeur pour déplacer l'icône verticalement */
+  top: 20px;
+  position: absolute;
+}
+/* Style pour la zone de texte "Customers" */
+.input-sales {
+  padding: 8px; 
+  font-size: 16px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px;
+  width: 130px;
+  height: 25px; 
+  top: 25px;
+  margin-top: 0px;
+  position: absolute;
+  margin-left: 50px;
+}
+/* Style pour la zone de texte "Products" */
+.input-products {
+  padding: 8px; 
+  font-size: 16px;
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  width: 130px;
+  height: 25px; 
+  margin-top: 70px;
+  position: absolute;
+  margin-left: 50px;
+}
+/* Style pour la zone de texte "Requests" */
+.input-requests {
+  width: 130px;
+  height: 25px; 
+  top: 25px;
+  margin-top: 0px;
+  position: absolute;
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  margin-left: 370px;
+  padding: 8px; 
+  font-size: 16px;
+}
+ /* Style pour la zone de texte "Customers" */
+ .input-customers {
+  width: 130px;
+  height: 25px; 
+  top: 85px;
+  margin-top: 15px;
+  position: absolute;
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  margin-left: 370px;
+  padding: 8px; 
+  font-size: 16px;
+}
+.request-icon {
+  padding: 5px;
+  position: absolute;
+  width: 33px;
+  height: 33px;
+  margin-left: 290px;
+  margin-top: -25px;
+  border-radius: 10px;
+}
+.product-icon {
+  padding: 5px;
+  position: absolute;
+  width: 33px;
+  height: 33px;
+  margin-left: -28px;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+.customer-icon {
+  padding: 5px;
+  position: absolute;
+  width: 33px;
+  height: 33px;
+  margin-left: 290px;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+/* Style pour la zone de texte "Revenue" */
+.input-revenue {
+  width: 110px;
+  height: 25px; 
+  top: 80px;
+  margin-top: 15px;
+  position: absolute;
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  margin-left: -13px;
+  padding: 3px; 
+  font-size: 14px;
+}
+/* Style pour la zone de texte "Proceeds" */
+.input-proceeds {
+  width: 110px;
+  height: 25px; 
+  top: 80px;
+  margin-top: 15px;
+  position: absolute;
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  margin-left: -13px;
+  padding: 3px; 
+  font-size: 14px;
+}
+/* Style pour la zone de texte "Request" */
+.input-request {
+  width: 110px;
+  height: 25px; 
+  top: 80px;
+  margin-top: 15px;
+  position: absolute;
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  margin-left: -13px;
+  padding: 3px; 
+  font-size: 14px;
+}
+.tile-container.tile-container.third-container h1 {
+  font-size: 17px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+}
+.revenu-icon {
+  padding: 5px;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  margin-left: -5px;
+  margin-top: -20px;
+  border-radius: 10px;
+}
+.req-icon {
+  padding: 5px;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  margin-left: -5px;
+  margin-top: -20px;
+  border-radius: 10px;
+}
+.money-icon {
+  padding: 5px;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  margin-left: -5px;
+  margin-top: -20px;
+  border-radius: 10px;
+}
+/* Styles pour ajuster la taille du graphique */
+#percentage-chart {
+
+position: relative;
+top: 148px; /* Déplacement vertical */
+left: 250px; /* Déplacement horizontal */
+}
+.models-label {
+font-size: 15px;
+margin-left: 15px;
+margin-top: 10px;
+border: 1px solid #ccc; 
+padding: 3px; 
+border-radius: 4px; 
+}
+
+
+/* Styles pour le graphique des ventes hebdomadaires */
+#conversion-rate-chart {
+width: 100%; /* Ajustez la largeur selon vos besoins */
+height: 300px; /* Ajustez la hauteur selon vos besoins */
+margin-bottom: 10px; /* Ajoutez une marge en bas pour l'espace */
+margin-top: 110px;
+}
+
+.input-Compared-to-the-last-month {
+width: 220px;
+height: 25px; 
+top: 80px;
+position: absolute;
+border: 1px solid #ccc;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+text-align: left;
+border-radius: 4px; 
+padding: 3px; 
+font-size: 14px;
+}
+
+.statistics-container4 {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+}
+
+.tile-container.fourth-container .tile {
+width: 100%;
+}
+
+.tile-container.fourth-container h8 {
+text-align: center;
+margin-bottom: 20px;
+font-size: 21px;
+color: #333; /* Couleur du texte */
+font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+
+}
+
+#sales-status-chart {
+width: 50px;
+height: 200px; /* Hauteur fixe pour le graphique */
+}

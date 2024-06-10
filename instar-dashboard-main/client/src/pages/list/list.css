@@ -1,0 +1,103 @@
+/* General container style */
+.users-container {
+    background-color: #1a1919;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 150px; /* Adjust this value to move the container down */
+    margin-left: 80px;
+    width: 950px;
+    display: inline-block;
+}
+
+/* General table style */
+table {
+    width: 95%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-left: 0px;
+    border-radius: 5px;
+    background-color: #1a1919;
+}
+
+/* Table cell style */
+th, td {
+    border: none;
+    padding: 27px;
+    text-align: left;
+    border-bottom: 0.1px solid #fff;
+    color: #dfe2e4;
+    background-color: #242529;
+}
+
+/* Table header style */
+th {
+    background-color: #1a1919;
+    border-collapse: collapse; /* Merge cell borders */
+    border-top: 1px solid #ced4da; /* Top border of each row */
+}
+
+/* Highlight selected row */
+tbody tr:hover {
+    background-color: #ffffff;
+}
+
+/* Delete button style */
+.delete-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    background-color: #ff1a1a;
+}
+
+/* Pagination style */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination span {
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #2a2a2a;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.pagination span:hover {
+    background-color: #444;
+}
+
+.pagination span.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.c{
+    color: #ffffff;
+    font-size: 25px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Adjust as needed */
+  }
+  
+  .search-container input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    margin-right: 10px; /* Adjust as needed */
+  }
+  

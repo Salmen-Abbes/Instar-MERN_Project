@@ -1,0 +1,130 @@
+.tile-container.first {
+    margin-top: 250px; /* Ajoute la marge au-dessus du premier cadre */
+    margin-left: 350px; /* Ajoute la marge à gauche du premier cadre */
+  }
+  
+  .tile-container.first .tile {
+    background-color: #ffffff; /* Couleur de fond blanche */
+    border: 1px solid #ffffff; /* Bordure gris clair */
+    padding: 10px; /* Ajoute un peu de rembourrage */
+    border-top-left-radius: 15px; /* Ajoute un coin légèrement arrondi */
+    border-bottom-left-radius: 15px;
+    height: 300px; /* Hauteur du cadre */
+    width: 230px; /* Largeur du cadre */
+  }
+  .tile-container.second {
+    margin-top: -322px; /* Ajoute un peu d'espace au-dessus du deuxième cadre */
+    margin-left: 605px;
+  }
+  
+  .tile-container.second .tile {
+    background-color: #ffffff; /* Couleur de fond blanche */
+    border: 1px solid #ffffff; /* Bordure gris clair */
+    padding: 10px; /* Ajoute un peu de rembourrage */
+    border-top-right-radius: 15px; /* Ajoute un coin légèrement arrondi */
+    border-bottom-right-radius: 15px;
+    height: 300px; /* Hauteur du cadre */
+    width: 310px; /* Largeur du cadre */
+    margin-left: 2px; /* Ajoute une marge à gauche pour l'espacement */
+  }
+  .tile-container.third {
+    margin-top: 20px; /* Ajoute un peu d'espace au-dessus du troisième cadre */
+    margin-left: 860px; /* Ajustez la marge à gauche du troisième cadre selon vos besoins */
+  }
+  
+  .tile-container.third .tile {
+    background-color: #ffffff; /* Couleur de fond blanche */
+    border: 1px solid #ffffff; /* Bordure gris clair */
+    padding: 10px; /* Ajoute un peu de rembourrage */
+    border-radius: 15px; /* Ajoute un coin légèrement arrondi */
+    height: 300px; /* Hauteur du cadre */
+    width: 250px; /* Largeur du cadre */
+    margin-left: 110px; /* Ajoute une marge à gauche pour l'espacement */
+    margin-top: -341px;
+}
+.tile-container.fourth {
+    margin-top: 20px; /* Ajoute un peu d'espace au-dessus du quatrième cadre */
+    margin-left: 1185px; /* Ajustez la marge à gauche du quatrième cadre selon vos besoins */
+  }
+  
+  .tile-container.fourth .tile {
+    background-color: #ffffff; /* Couleur de fond blanche */
+    border: 1px solid #ffffff; /* Bordure gris clair */
+    padding: 10px; /* Ajoute un peu de rembourrage */
+    border-radius: 15px; /* Ajoute un coin légèrement arrondi */
+    height: 300px; /* Hauteur du cadre */
+    width: 565px; /* Largeur du cadre */
+    margin-left: -835px; /* Ajoute une marge à gauche pour l'espacement */
+    margin-top: -20px
+  }
+  .tile-container.fifth {
+    margin-top: 20px; /* Ajoute un peu d'espace au-dessus du cinquième cadre */
+    margin-left: 1760px; /* Ajustez la marge à gauche du cinquième cadre selon vos besoins */
+  }
+  
+  .tile-container.fifth .tile {
+    background-color: #ffffff; /* Couleur de fond blanche */
+    border: 1px solid #ffffff; /* Bordure gris clair */
+    padding: 10px; /* Ajoute un peu de rembourrage */
+    border-radius: 15px; /* Ajoute un coin légèrement arrondi */
+    height: 300px; /* Hauteur du cadre */
+    width: 250px; /* Largeur du cadre */
+    margin-left: -790px; /* Ajoute une marge à gauche pour l'espacement */
+    margin-top: -340px;
+    }
+
+    .bestselling-icon {
+    height: 180px;
+    width: auto;
+    margin-top:90px;
+    margin-left: 12px;
+    
+    }
+    .tile-container.third .tile h2 {
+        margin-top: -257px;
+        margin-left: 10px;
+        color: #333; /* Couleur du texte */
+        font-size: 24px; /* Taille de la police */
+        /* Ajoutez d'autres styles au besoin */
+      }
+   
+      .tile-container.second .tile p {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+      
+      .tile-container.second .tile p strong {
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      .user-frame {
+        width: 100px;
+        height: 100px;
+        border: 2px solid #7c7c7c;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        margin-left: 55px;
+      }
+      
+      .user-image {
+        margin-top: 10px;
+        height: auto;
+        object-fit: cover;
+        align-items: center;
+      }
+      /* Ajoutez ces styles CSS dans votre fichier requests.css */
+
+
+
+      
+    
+  
+  
+  
+  
+  

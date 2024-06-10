@@ -1,0 +1,292 @@
+.table {
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 25px;
+  color: #EDF5FF;
+  width: 850px;
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajoute une ombre douce */
+  border-collapse: collapse; /* Pour une meilleure apparence des bordures */
+}
+
+.table thead {
+  background-color: rgba(77, 89, 194, 0.616);
+}
+
+.table th {
+  padding: 15px; /* Augmente un peu la taille du rembourrage */
+}
+
+.table tbody {
+  background-color: #242529;
+}
+
+.table td, .table th {
+  padding: 17px; /* Augmente le rembourrage pour un espacement confortable */
+  border-bottom: 2px solid #504f4f; /* Ajoute une bordure en bas de chaque ligne */
+}
+
+.status {
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: inline-block;
+  font-size: 14px; /* Réduit légèrement la taille de la police */
+}
+
+.parentcont {
+  margin-top: 180px;
+}
+
+/* Pagination */
+.pagination {
+  position: absolute;
+  margin-top: 800px; /* Adjust this value to move the pagination up */
+  color: #ffedee;
+  margin-left: 45%; /* Adjust this value to move left */
+  transform: translateX(-70%); /* Adjust this value to match the margin-left */
+  padding: 10px;
+  font-size: 16px;
+  z-index: 3;
+  display: flex; /* Ensure buttons are aligned in a row */
+  align-items: center; /* Center items vertically */
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 8px 12px; 
+  font-size: 16px; 
+  cursor: pointer;
+  background-color: #666ADF; /* Couleur de fond pour les boutons */
+  border: none;
+  border-radius: 5px;
+  color: #EDF5FF;
+  transition: background-color 0.3s ease; /* Animation de transition pour une sensation interactive */
+}
+
+.pagination button:hover {
+  background-color: #4D4D9E; /* Changement de couleur au survol */
+}
+
+/* Recherche */
+.search {
+  position: absolute;
+  margin-top: 260px;
+  margin-right: 610px;
+  display: flex;
+  background-color: #FBFBFB;
+  width: 239px;
+  height: 30px;
+  align-items: center;
+  border-radius: 8px;
+  z-index: 2;
+}
+
+.search input[type="text"] {
+  width: calc(100% - 40px);
+  height: 100%;
+  padding: 0 10px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px; /* Réduit légèrement la taille de la police */
+  color: #333;
+}
+
+.search button {
+  width: 40px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.search button:hover {
+  background-color: #F0F0F0;
+}
+
+.search .iicon {
+  color: #696969;
+  width: 18px; /* Réduit légèrement la taille de l'icône */
+  height: 18px; /* Réduit légèrement la taille de l'icône */
+}
+
+/* Fond */
+.background {
+  position: absolute;
+  width: 900px; /* Ajustez la largeur selon vos besoins */
+  height: 835px; /* Ajustez la hauteur selon vos besoins */
+  top: 150px;
+  left: 430px;
+  background-color: #35363D;
+  border-radius: 15px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.pagination {
+  position: absolute;
+  margin-top: 75px;
+  margin-left: 1045px;
+  top: 900px;
+  left: 100px;
+
+}
+
+.pagination button {
+  background-color: #242525;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.pagination button:hover {
+  background-color: #1c7f9e;
+}
+
+.pagination span {
+  padding: 8px 16px;
+  margin: 10 5px;
+  font-weight: bold;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  height: 80%; /* Nouvelle hauteur */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow-y: auto; /* Permet de scroller si le contenu dépasse */
+}
+
+.modal h3 {
+  margin-top: 0;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal form label {
+  margin-top: 10px;
+}
+
+.modal form input,
+.modal form select {
+  margin-top: 5px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.modal form button {
+  margin-top: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal form button[type="submit"] {
+  background-color: #666ADF;
+  color: white;
+}
+
+.modal form button[type="button"] {
+  background-color: #ccc;
+  color: black;
+  margin-left: 10px;
+}
+
+
+
+/* Add Button */
+.add-button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  position: absolute;
+  width: 100px;
+  top: 170px;
+  right: 250px;
+  z-index: 2;
+}
+
+.add-button:hover {
+  background-color: #007bb5;
+}
+
+/* Filter Button */
+.filter-button {
+  background-color: #f39c12;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 100px;
+  border-radius: 5px;
+  position: absolute;
+  top: 170px;
+  right: 400px;
+  z-index: 2;
+}
+
+.filter-button:hover {
+  background-color: #e67e22;
+}
+
+/* Filter Options */
+.filter-options {
+  background-color: #f39c12;
+  border-radius: 5px;
+  list-style: none;
+  padding: 10px;
+  position: absolute;
+  top: 100px;
+  right: 150px;
+  z-index: 5;
+}
+
+.filter-options li {
+  padding: 5px 10px;
+  cursor: pointer;
+  color: white;
+}
+
+.filter-options li:hover {
+  background-color: #e67e22;
+  border-radius: 5px;
+}

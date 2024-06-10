@@ -1,0 +1,36 @@
+.navbar{
+    margin-left: 820px;
+    margin-top: -60px;
+}
+.search{
+    display:block;
+    background-color:  #FBFBFB;
+    width: 269px;
+    height: 38px;
+    top: -70px;
+    right: 170px;
+    border-radius: 8px;
+}
+.wrapper{
+    display: flex;
+    align-items: center;
+}
+input{
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 340px;
+    height: 38px;
+}
+:placeholder-shown{
+    font-size: 18px;
+
+}
+.items {
+    color: white;
+    margin-left: 350px;
+    margin-top: -50px;
+    display: flex;
+    gap: 20px;
+}
+

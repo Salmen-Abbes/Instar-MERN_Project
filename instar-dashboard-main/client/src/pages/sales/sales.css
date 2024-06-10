@@ -1,0 +1,300 @@
+
+/* Style général du conteneur */
+.sales-container {
+  background-color: #1a1919;
+  padding: 0px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-top: 40px;
+  margin-left: 40px;
+  width: 950px;
+  display: inline-block;
+}
+
+/* Style du titre */
+.page-title {
+  font-size: 32px;
+  margin-right: 20px;
+  color: #ffffff;
+}
+
+/* Style du titre "All Sales" */
+.sales-title {
+  font-size: 24px;
+  margin-top: 50px;
+  margin-left: 35px;
+  color: #ffffff;
+}
+
+/* Style de la barre de recherche à gauche */
+.search-input-left {
+  width: 25%;
+  height: 25px;
+  padding: 4px;
+  margin-bottom: 20px;
+  margin-left: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ffffff;
+  color: #1b1b1b;
+  margin-right: 450px;
+}
+
+/* Style de la barre d'affichage des produits */
+.pagination-select {
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #272525;
+}
+
+/* Style général du tableau */
+table {
+  width: 95%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-left: 0px;
+  border-radius: 5px;
+  width: 950px;
+  border-radius: 5px;
+  background-color: #1a1919;
+}
+
+/* Style des cellules du tableau */
+th, td {
+  border: none;
+  padding: 27px;
+  text-align: left;
+  border-bottom: 0.1px solid #fff;
+  color: #dfe2e4;
+  background-color: #242529;
+}
+
+/* Style de l'en-tête du tableau */
+th {
+  background-color: #1a1919;
+  border-collapse: collapse; /* Fusionner les bordures de cellules */
+  border-top: 1px solid #ced4da; /* Bordure en haut de chaque ligne */
+}
+/* Style pour mettre en surbrillance la ligne sélectionnée */
+tbody tr:hover {
+  background-color: #ffffff;
+}
+
+
+/* CSS pour les boutons de tableau */
+.filter-buttons button {
+  background-color: #f8f9fa; /* Couleur de fond */
+  color: #272727; /* Couleur du texte */
+  border: 1px solid #ced4da; /* Bordure */
+  padding: 5px 4px; /* Rembourrage intérieur */
+  border-radius: 5px; /* Bordure arrondie */
+  cursor: pointer; /* Curseur de pointeur au survol */
+  margin-right: 15px; /* Marge à droite pour l'espacement */
+  font-size: 16px; /* Taille de la police */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s; /* Transition fluide de la couleur de fond */
+}
+
+.filter-buttons button:hover {
+  background-color: #030303; /* Couleur de fond au survol */
+}
+
+/* CSS pour les options de sélection de date */
+.date-filter {
+  background-color: #f8f9fa; /* Couleur de fond */
+  color: #333; /* Couleur du texte */
+  border: 1px solid #ced4da; /* Bordure */
+  padding: 4px 4px; /* Rembourrage intérieur */
+  border-radius: 5px; /* Bordure arrondie */
+  cursor: pointer; /* Curseur de pointeur au survol */
+  margin-right: 25px; /* Marge à droite pour l'espacement */
+  margin-left: 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px; /* Taille de la police */
+  transition: background-color 0.3s, border-color 0.3s; /* Transition fluide de la couleur de fond et de la bordure */
+}
+
+.date-filter:hover {
+  background-color: #e2e6ea; /* Couleur de fond au survol */
+}
+
+/* CSS pour les pop-ups */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color: #272727;
+}
+
+.modal-content p {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.modal-content button {
+  background-color: #c7c9c7;
+  color: #222;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.modal-content button:hover {
+  background-color: #b3b3b3;
+}
+
+/* Style pour les tables dans les pop-ups */
+.modal-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.modal-content th, .modal-content td {
+  border: 1px solid #ced4da;
+  padding: 10px;
+  text-align: left;
+}
+
+.modal-content th {
+  background-color: #f8f9fa;
+}
+
+.modal-content td {
+  background-color: #ffffff;
+}
+
+/* Style de la table dans les pop-ups */
+.modal-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.modal-content th, .modal-content td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.modal-content th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.modal-content td {
+  color: #333;
+}
+
+.modal-content tbody tr:hover {
+  background-color: #f5f5f5;
+}
+/* CSS pour les pop-ups */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color: #272727;
+}
+
+.modal-content p {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.modal-content button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.modal-content button:hover {
+  background-color: #0056b3;
+}
+
+/* CSS pour les boutons de tableau */
+.filter-buttons button {
+  background-color: #f8f9fa; /* Couleur de fond */
+  color: #272727; /* Couleur du texte */
+  border: 1px solid #ced4da; /* Bordure */
+  padding: 5px 10px; /* Rembourrage intérieur */
+  border-radius: 5px; /* Bordure arrondie */
+  cursor: pointer; /* Curseur de pointeur au survol */
+  margin-right: 15px; /* Marge à droite pour l'espacement */
+  font-size: 16px; /* Taille de la police */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s; /* Transition fluide de la couleur de fond */
+}
+
+.filter-buttons button:hover {
+  background-color: #030303; /* Couleur de fond au survol */
+}
+.order-id-button {
+  cursor: pointer;
+}
+.order-id-button,
+td button,
+th button {
+  cursor: pointer;
+}
+
+.bouton{
+  width: 140px;
+}
