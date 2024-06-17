@@ -1,0 +1,33 @@
+[
+    {
+      "name": "Alpha Supplies",
+      "address": "123 Industrial Road, Cityville, CA 12345",
+      "phone": 1234567890,
+      "marque": "AlphaBrand"
+    },
+    {
+      "name": "Beta Traders",
+      "address": "456 Commerce Street, Townsville, NY 67890",
+      "phone": 2345678901,
+      "marque": "BetaLine"
+    },
+    {
+      "name": "Gamma Wholesale",
+      "address": "789 Market Avenue, Metropolis, TX 34567",
+      "phone": 3456789012,
+      "marque": "GammaGoods"
+    },
+    {
+      "name": "Delta Distributors",
+      "address": "101 Supply Lane, Smalltown, FL 45678",
+      "phone": 4567890123,
+      "marque": "DeltaWare"
+    },
+    {
+      "name": "Epsilon Enterprises",
+      "address": "202 Vendor Street, Big City, IL 56789",
+      "phone": 5678901234,
+      "marque": "EpsilonProducts"
+    }
+  ]
+  

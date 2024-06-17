@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./login.css";
 
-const Login = ({ setIsAuthenticated }) => {
+const Login = ({ setIsAuthenticated,setRole }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -23,23 +23,20 @@ const Login = ({ setIsAuthenticated }) => {
         password,
       });
       const { token, refreshtoken, Uid, role } = response.data;
+      localStorage.setItem("token", token);
+      localStorage.setItem("refreshToken", refreshtoken);
+      localStorage.setItem("Uid", Uid);
+      localStorage.setItem("role", role);
+      setIsAuthenticated(true);
 
-      if (token && role === "admin") {
-        // Save token to local storage or state management
-        localStorage.setItem("token", token);
-        localStorage.setItem("refreshToken", refreshtoken);
-        localStorage.setItem("Uid", Uid);
-        localStorage.setItem("role", role);
-        setIsAuthenticated(true);
+      if (role === "admin") {
+        setRole("admin")
         navigate("/dashboard");
-      } else if (token && role === "user") {
-        localStorage.setItem("token", token);
-        localStorage.setItem("refreshToken", refreshtoken);
-        localStorage.setItem("Uid", Uid);
-        localStorage.setItem("role", role);
-        setIsAuthenticated(true);
+      } else if (role === "user") {
+        setRole("user")
+        navigate("/statistics");
       } else {
-        setError("Invalid email or password.");
+        setError("Invalid role.");
       }
     } catch (err) {
       setError(

@@ -22,20 +22,20 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="top">
-        <Link to="/dashboard">
+        <Link to={role==='user' ?("/dashboard") : ("/statistics")}>
           <img src={logo} alt="" />
         </Link>
       </div>
       <div className="center">
         <ul>
-          {role === "user" && (
+          {role === "admin" && (
             <Link to="/dashboard">
               <li>
                 <MdSpaceDashboard /> <span>Dashboard</span>
               </li>
             </Link>
           )}
-          {role === "admin" && (
+          {role === "user" && (
             <Link to="/statistics">
               <li>
                 <IoStatsChart /> <span>Statistics</span>
@@ -61,13 +61,7 @@ const Sidebar = () => {
             </Link>
           )}
 
-          {role === "admin" && (
-            <Link to="/requests">
-              <li>
-                <RiMessage2Fill /> <span>Requests</span>
-              </li>
-            </Link>
-          )}
+          
         </ul>
       </div>
       <div className="bottom" onClick={handleLogout}>

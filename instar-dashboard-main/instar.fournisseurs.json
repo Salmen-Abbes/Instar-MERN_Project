@@ -1,0 +1,53 @@
+[{
+  "_id": {
+    "$oid": "666d905c95b54807960b7c4c"
+  },
+  "name": "Alpha Supplies",
+  "address": "123 Industrial Road, Cityville, CA 12345",
+  "phone": 1234567890,
+  "marque": "AlphaBrand"
+},
+{
+  "_id": {
+    "$oid": "666d905c95b54807960b7c4d"
+  },
+  "name": "Beta Traders",
+  "address": "456 Commerce Street, Townsville, NY 67890",
+  "phone": {
+    "$numberLong": "2345678901"
+  },
+  "marque": "BetaLine"
+},
+{
+  "_id": {
+    "$oid": "666d905c95b54807960b7c4e"
+  },
+  "name": "Gamma Wholesale",
+  "address": "789 Market Avenue, Metropolis, TX 34567",
+  "phone": {
+    "$numberLong": "3456789012"
+  },
+  "marque": "GammaGoods"
+},
+{
+  "_id": {
+    "$oid": "666d905c95b54807960b7c4f"
+  },
+  "name": "Delta Distributors",
+  "address": "101 Supply Lane, Smalltown, FL 45678",
+  "phone": {
+    "$numberLong": "4567890123"
+  },
+  "marque": "DeltaWare"
+},
+{
+  "_id": {
+    "$oid": "666d905c95b54807960b7c50"
+  },
+  "name": "Epsilon Enterprises",
+  "address": "202 Vendor Street, Big City, IL 56789",
+  "phone": {
+    "$numberLong": "5678901234"
+  },
+  "marque": "EpsilonProducts"
+}]

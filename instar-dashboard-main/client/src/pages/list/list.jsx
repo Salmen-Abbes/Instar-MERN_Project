@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./list.css"; // Import the CSS for user styles
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import "./list.css";
 import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
-  const [entriesToShow, setEntriesToShow] = useState(5); // Change to 5 for only 5 users
+  const [entriesToShow, setEntriesToShow] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState(""); // Add useState for searchTerm
+  const [searchTerm, setSearchTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     fetchUsers();
@@ -30,13 +32,12 @@ const Users = () => {
       setUsers(users.filter((user) => user._id !== userId));
     } catch (error) {
       console.error("Error deleting user:", error);
-      // Handle error here, e.g., display an error message to the user
     }
   };
 
   const handleEntriesChange = (event) => {
     setEntriesToShow(Number(event.target.value));
-    setCurrentPage(1); // Reset to first page on entries change
+    setCurrentPage(1);
   };
 
   const totalPages = Math.ceil(users.length / entriesToShow);
@@ -51,7 +52,6 @@ const Users = () => {
 
   const generateTablePagination = () => {
     const pagination = [];
-
     for (let i = 1; i <= totalPages; i++) {
       pagination.push(
         <span
@@ -63,20 +63,19 @@ const Users = () => {
         </span>
       );
     }
-
     return pagination;
   };
 
-  // Filtering user data based on searchTerm
-  const filteredUsers = users.filter((user) => {
-    return (
-      user.Firstname.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      user.Lastname.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  });
+  const filteredUsers = users.filter((user) =>
+    user.Firstname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    user.phone.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    user.role.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const startIndex = (currentPage - 1) * entriesToShow;
   const endIndex = startIndex + entriesToShow;
+  const usersToShow = filteredUsers.slice(startIndex, endIndex);
 
   const handleDeleteClick = (user) => {
     setUserToDelete(user);
@@ -94,6 +93,10 @@ const Users = () => {
     setUserToDelete(null);
   };
 
+  const handleUserClick = (userId) => {
+    navigate(`/details/${userId}`); // Navigate to the Requests page with userId as a param
+  };
+
   return (
     <div>
       <div className="users-container">
@@ -104,7 +107,7 @@ const Users = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <span className="c">{filteredUsers.length} Users </span>
+          <span className="c">{filteredUsers.length} Users</span>
         </div>
         <table>
           <thead>
@@ -118,8 +121,8 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredUsers.slice(startIndex, endIndex).map((user) => (
-              <tr key={user._id}>
+            {usersToShow.map((user) => (
+              <tr key={user._id} onClick={() => handleUserClick(user._id)}>
                 <td>{user.Firstname}</td>
                 <td>{user.Lastname}</td>
                 <td>{user.email}</td>
@@ -128,7 +131,10 @@ const Users = () => {
                 <td>
                   <button
                     className="delete-button"
-                    onClick={() => handleDeleteClick(user)}
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent triggering row click
+                      handleDeleteClick(user);
+                    }}
                   >
                     X
                   </button>

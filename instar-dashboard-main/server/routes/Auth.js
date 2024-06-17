@@ -19,6 +19,7 @@ router.post("/refreshtoken", AuthController.refreshtoken);
 router.patch("/users/:id/role", authenticate, AuthController.updateRole);
 router.patch("/users/:id/ban", authenticate, AuthController.banUser);
 router.get("/users", AuthController.getAllUsers);
+router.get("/users/:id",AuthController.getUserById)
 // router.patch('/users/:id/edit', AuthController.editUser);
 router.delete("/users/:id/delete", AuthController.deleteUser);
 

@@ -20,14 +20,17 @@ const Signup = ({ setIsAuthenticated }) => {
     }
     const response = await fetch('http://localhost:3000/api/register',{
       method:'POST',
-      body:{
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
         name,
         email,
         password,
         company,
         phoneNumber,
         city
-      }
+      })
     })
     if(!response.ok ){
       alert("failed to signup")

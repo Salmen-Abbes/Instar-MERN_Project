@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "./pages/dashboard/dashboard";
 import Statistics from "./pages/statistics/statistics";
 import Sales from "./pages/sales/sales";
@@ -12,11 +12,12 @@ import List from "./pages/list/list";
 import Requests from "./pages/requests/requests";
 import "./App.css";
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [role, setRole] = useState(localStorage.getItem("role"));
+  const [user,setUser] = useState(null);
   useEffect(() => {
     const checkTokenExpiration = () => {
       const accessToken = localStorage.getItem("token");
@@ -30,20 +31,18 @@ function App() {
       const currentTime = Date.now() / 1000;
 
       if (decodedAccessToken.exp <= currentTime) {
-        // Token has expired
         setIsAuthenticated(false);
-        localStorage.removeItem("token"); // Remove expired token
-        localStorage.removeItem("refreshToken"); // Remove refresh token as well
+        localStorage.removeItem("token");
+        localStorage.removeItem("refreshToken");
         return;
       }
 
       if (decodedAccessToken.exp - currentTime < 300) {
-        // Check if token is about to expire (within 5 minutes)
         axios
           .post("/api/refreshtoken", { refreshToken })
           .then((response) => {
             const newAccessToken = response.data.accessToken;
-            localStorage.setItem("accessToken", newAccessToken);
+            localStorage.setItem("token", newAccessToken);
           })
           .catch((error) => {
             console.error("Error refreshing access token:", error);
@@ -51,20 +50,55 @@ function App() {
       }
     };
 
-    // Check token expiration every minute
     const intervalId = setInterval(checkTokenExpiration, 60000);
 
-    // Clean up interval when component unmounts
     return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
-    // Check if token exists in localStorage
     const token = localStorage.getItem("token");
     if (token) {
       setIsAuthenticated(true);
     }
   }, []);
+  
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const uid = localStorage.getItem("Uid");
+    if (token) {
+      setIsAuthenticated(true);
+      axios.get(`/api/users/${uid}`)
+        .then((response) => {
+          setUser(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching user by ID:", error);
+        });
+    }
+  }, []);
+
+  const ProtectedRoute = ({ children, roleRequired }) => {
+    if (!isAuthenticated) {
+      return <Navigate to="/login" />;
+    }
+
+    if (roleRequired && role !== roleRequired) {
+      return <Navigate to="/" />;
+    }
+
+    return children;
+  };
+
+  const HomeRoute = () => {
+    if (!isAuthenticated && !role) {
+      return <Navigate to="/login"/>;
+    } else if (isAuthenticated && role === "admin") {
+     return <Navigate to="/dashboard"/>
+    } else if (isAuthenticated && role === "user") {
+      return <Navigate to="/statistics"/>;
+    }
+  };
+
   return (
     <Router>
       <div className="app-container">
@@ -74,7 +108,11 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<Login setIsAuthenticated={setIsAuthenticated} />}
+              element={<HomeRoute />}
+            />
+            <Route
+              path="/login"
+              element={<Login setIsAuthenticated={setIsAuthenticated} setRole={setRole}/>}
             />
             <Route
               path="/signup"
@@ -83,61 +121,49 @@ function App() {
             <Route
               path="/dashboard"
               element={
-                isAuthenticated && role === "user" ? (
+                <ProtectedRoute roleRequired="admin">
                   <Dashboard />
-                ) : (
-                  <Login setIsAuthenticated={setIsAuthenticated} />
-                )
+                </ProtectedRoute>
               }
             />
             <Route
               path="/statistics"
               element={
-                isAuthenticated ? (
+                <ProtectedRoute roleRequired="user">
                   <Statistics />
-                ) : (
-                  <Login setIsAuthenticated={setIsAuthenticated} />
-                )
+                </ProtectedRoute>
               }
             />
             <Route
               path="/products"
               element={
-                isAuthenticated ? (
-                  <Products />
-                ) : (
-                  <Login setIsAuthenticated={setIsAuthenticated} />
-                )
+                <ProtectedRoute>
+                  <Products user={user} />
+                </ProtectedRoute>
               }
             />
             <Route
               path="/list"
               element={
-                isAuthenticated && role === "admin" ? (
+                <ProtectedRoute roleRequired="admin">
                   <List />
-                ) : (
-                  <Login setIsAuthenticated={setIsAuthenticated} />
-                )
+                </ProtectedRoute>
               }
             />
             <Route
               path="/sales"
               element={
-                isAuthenticated ? (
-                  <Sales />
-                ) : (
-                  <Login setIsAuthenticated={setIsAuthenticated} />
-                )
+                <ProtectedRoute>
+                  <Sales user={user} />
+                </ProtectedRoute>
               }
             />
             <Route
-              path="/requests"
+              path="/details/:userId"
               element={
-                isAuthenticated && role === "admin" ? (
+                <ProtectedRoute roleRequired="admin">
                   <Requests />
-                ) : (
-                  <Login setIsAuthenticated={setIsAuthenticated} />
-                )
+                </ProtectedRoute>
               }
             />
           </Routes>

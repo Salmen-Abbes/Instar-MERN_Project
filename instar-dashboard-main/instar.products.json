@@ -1,0 +1,109 @@
+[{
+  "_id": {
+    "$oid": "666d90cb95b54807960b7c53"
+  },
+  "name": "Gadget B",
+  "description": "An innovative gadget for tech enthusiasts.",
+  "price": 49.99,
+  "quantity": 200,
+  "category": "Electronicsaa",
+  "rating": 4.8,
+  "subCategory": "Gadgets",
+  "image": "https://example.com/images/gadget_b.jpg",
+  "image3DInfo": [
+    {
+      "image3D": "https://example.com/3d/gadget_b_3d.glb",
+      "imageCouleurs": "https://example.com/3d/gadget_b_colors.jpg",
+      "quantity": 100,
+      "_id": {
+        "$oid": "666d90dbc736b2570f8e6080"
+      }
+    }
+  ],
+  "fournisseur": {
+    "$oid": "60d21b4667d0d8992e610c88"
+  },
+  "sales": [
+    {
+      "$oid": "60d21b4667d0d8992e610c89"
+    },
+    {
+      "$oid": "60d21b4667d0d8992e610c8a"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "666d90cb95b54807960b7c54"
+  },
+  "name": "Device C",
+  "description": "A versatile device for home and office use.",
+  "price": 79.99,
+  "quantity": 150,
+  "category": "Appliances",
+  "rating": 4.7,
+  "subCategory": "Home Appliances",
+  "image": "https://example.com/images/device_c.jpg",
+  "image3DInfo": [
+    {
+      "image3D": "https://example.com/3d/device_c_3d.glb",
+      "imageCouleurs": "https://example.com/3d/device_c_colors.jpg",
+      "quantity": 75
+    }
+  ],
+  "fournisseur": "60d21b4667d0d8992e610c8b",
+  "sales": [
+    "60d21b4667d0d8992e610c8c",
+    "60d21b4667d0d8992e610c8d"
+  ]
+},
+{
+  "_id": {
+    "$oid": "666d90cb95b54807960b7c55"
+  },
+  "name": "Tool D",
+  "description": "A reliable tool for professional use.",
+  "price": 39.99,
+  "quantity": 120,
+  "category": "Tools",
+  "rating": 4.6,
+  "subCategory": "Power Tools",
+  "image": "https://example.com/images/tool_d.jpg",
+  "image3DInfo": [
+    {
+      "image3D": "https://example.com/3d/tool_d_3d.glb",
+      "imageCouleurs": "https://example.com/3d/tool_d_colors.jpg",
+      "quantity": 60
+    }
+  ],
+  "fournisseur": "60d21b4667d0d8992e610c8e",
+  "sales": [
+    "60d21b4667d0d8992e610c8f",
+    "60d21b4667d0d8992e610c90"
+  ]
+},
+{
+  "_id": {
+    "$oid": "666d90cb95b54807960b7c56"
+  },
+  "name": "Accessory E",
+  "description": "An essential accessory for everyday use.",
+  "price": 19.99,
+  "quantity": 300,
+  "category": "Accessories",
+  "rating": 4.9,
+  "subCategory": "Phone Accessories",
+  "image": "https://example.com/images/accessory_e.jpg",
+  "image3DInfo": [
+    {
+      "image3D": "https://example.com/3d/accessory_e_3d.glb",
+      "imageCouleurs": "https://example.com/3d/accessory_e_colors.jpg",
+      "quantity": 150
+    }
+  ],
+  "fournisseur": "60d21b4667d0d8992e610c91",
+  "sales": [
+    "60d21b4667d0d8992e610c92",
+    "60d21b4667d0d8992e610c93"
+  ]
+}]

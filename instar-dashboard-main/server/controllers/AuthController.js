@@ -5,11 +5,11 @@ const moment = require("moment");
 const nodemailer = require("nodemailer");
 
 const register = (req, res, next) => {
-  bycrypt.hash(req.body.password, 10, function (err, hashedPass) {
+  const password = req.body.password;
+  console.log(req.body)
+  bycrypt.hash(password, 10, function (err, hashedPass) {
     if (err) {
-      res.json({
-        error: err,
-      });
+      console.log(err)
     }
     let user = new User({
       Firstname: req.body.name,
@@ -21,15 +21,14 @@ const register = (req, res, next) => {
     user
       .save()
       .then((user) => {
+        console.log(user)
         res.json({
           message: "user Added Successfully",
           uId: user.id,
         });
       })
       .catch((error) => {
-        res.json({
-          message: error,
-        });
+       console.error(error)
       });
   });
 };
@@ -308,7 +307,18 @@ const updateRole = async (req, res, next) => {
     res.status(500).json({ message: err.message });
   }
 };
-
+const getUserById = async (req,res)=>{
+  const { id } = req.params;
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(user)}
+    catch(err){
+      console.error(err)
+    }
+}
 const banUser = async (req, res, next) => {
   const { id } = req.params;
   const { banned } = req.body;
@@ -395,4 +405,5 @@ module.exports = {
   getAllUsers,
   editUser,
   deleteUser,
+  getUserById
 };

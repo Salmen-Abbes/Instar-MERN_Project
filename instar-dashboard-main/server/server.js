@@ -19,13 +19,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/public/images", express.static("public/images"));
 
-// cors for angular integration
-// cors for angular integration
 const cors = require("cors");
 app.use(cors({ origin: "http://localhost:3000" }));
 //::::::::::
 mongoose
-  .connect("mongodb://localhost:27017/instar", {
+  .connect("mongodb+srv://dottaabbes3344:AnsEU9m3hYQnddV9@cluster0.wekf0d3.mongodb.net/instar", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
