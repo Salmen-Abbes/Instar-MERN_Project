@@ -17,7 +17,8 @@ import {jwtDecode} from "jwt-decode";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [role, setRole] = useState(localStorage.getItem("role"));
-  const [user,setUser] = useState(null);
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
     const checkTokenExpiration = () => {
       const accessToken = localStorage.getItem("token");
@@ -89,16 +90,6 @@ function App() {
     return children;
   };
 
-  const HomeRoute = () => {
-    if (!isAuthenticated && !role) {
-      return <Navigate to="/login"/>;
-    } else if (isAuthenticated && role === "admin") {
-     return <Navigate to="/dashboard"/>
-    } else if (isAuthenticated && role === "user") {
-      return <Navigate to="/statistics"/>;
-    }
-  };
-
   return (
     <Router>
       <div className="app-container">
@@ -108,11 +99,11 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<HomeRoute />}
+              element={<Navigate to="/login" />}
             />
             <Route
               path="/login"
-              element={<Login setIsAuthenticated={setIsAuthenticated} setRole={setRole}/>}
+              element={<Login setIsAuthenticated={setIsAuthenticated} setRole={setRole} />}
             />
             <Route
               path="/signup"

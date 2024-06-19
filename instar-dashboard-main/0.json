@@ -1,0 +1,78 @@
+[
+  {
+    "_id": {
+      "$oid": "777d90e595b54807960b7c57"
+    },
+    "productId": {
+      "$oid": "777d90cb95b54807960b7c53"
+    },
+    "fournisseurId": {
+      "$oid": "777d905c95b54807960b7c4c"
+    },
+    "UserId": {
+      "$oid": "777c7b01c0a3de69c2abc123"
+    },
+    "quantity": 10,
+    "timestamp": {
+      "$date": "2024-06-01T10:00:00.000Z"
+    },
+    "status": "Livrée"
+  },
+  {
+    "_id": {
+      "$oid": "777d90e595b54807960b7c58"
+    },
+    "productId": {
+      "$oid": "777d90cb95b54807960b7c54"
+    },
+    "fournisseurId": {
+      "$oid": "777d905c95b54807960b7c4d"
+    },
+    "UserId": {
+      "$oid": "777d89dac736b2570f8e601c"
+    },
+    "quantity": 5,
+    "timestamp": {
+      "$date": "2024-06-02T11:00:00.000Z"
+    },
+    "status": "Livrée"
+  },
+  {
+    "_id": {
+      "$oid": "777d90e595b54807960b7c59"
+    },
+    "productId": {
+      "$oid": "777d90cb95b54807960b7c55"
+    },
+    "fournisseurId": {
+      "$oid": "777d905c95b54807960b7c4e"
+    },
+    "UserId": {
+      "$oid": "777d89dac736b2570f8e601c"
+    },
+    "quantity": 8,
+    "timestamp": {
+      "$date": "2024-06-03T12:00:00.000Z"
+    },
+    "status": "Autre"
+  },
+  {
+    "_id": {
+      "$oid": "777d90e595b54807960b7c5a"
+    },
+    "productId": {
+      "$oid": "777d90cb95b54807960b7c56"
+    },
+    "fournisseurId": {
+      "$oid": "777d905c95b54807960b7c4f"
+    },
+    "UserId": {
+      "$oid": "777d89dac736b2570f8e601c"
+    },
+    "quantity": 15,
+    "timestamp": {
+      "$date": "2024-06-04T13:00:00.000Z"
+    },
+    "status": "Autre"
+  }
+]

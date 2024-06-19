@@ -1,37 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./dashboard.css";
 import Chart from "chart.js/auto";
-import { Link } from "react-router-dom"; // Importez Link depuis react-router-dom
+import { Link } from "react-router-dom";
 import logoavatar from "./logoavatar.png";
-import axios from "axios";
-// Composant pour le graphique de pourcentage
-function PercentageChart() {
+import "./dashboard.css";
+
+function PercentageChart({ available, unavailable }) {
   const chartRef = useRef(null);
-  const [available, setAvailable] = useState(0);
-  const [unavailable, setUnavailable] = useState(0);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await axios.get("/api/totalAvailableProducts").then((response) => {
-          setAvailable(response.data.available);
-          setUnavailable(response.data.unavailable);
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []); // Assurez-vous de surveiller les deux props
+
   useEffect(() => {
     const ctx = chartRef.current.getContext("2d");
     const percentageChart = new Chart(ctx, {
       type: "doughnut",
       data: {
-        labels: ["Available Products", "Unavailable Products"], // Ajoutez les étiquettes pour les deux ensembles de données
+        labels: ["Available", "Not Available"],
         datasets: [
           {
-            data: [available, unavailable], // Utilisez les valeurs des props
-            backgroundColor: ["#647adf", "#f5f5f5"], // Couleur des produits disponibles et non disponibles
+            data: [available, unavailable],
+            backgroundColor: ["#647adf", "#ff0000"], // Change the color for "Not Available" to red
             cutout: "85%",
           },
         ],
@@ -41,19 +26,48 @@ function PercentageChart() {
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: false,
+            display: true,
+            position: "bottom",
+            labels: {
+              usePointStyle: true,
+              padding: 20,
+              font: {
+                size: 14,
+              },
+              generateLabels: function (chart) {
+                const data = chart.data;
+                if (data.labels.length && data.datasets.length) {
+                  return data.labels.map((label, i) => {
+                    const meta = chart.getDatasetMeta(0);
+                    const style = meta.controller.getStyle(i);
+                    return {
+                      text: label,
+                      fillStyle: style.backgroundColor,
+                      hidden: isNaN(data.datasets[0].data[i]) || meta.data[i].hidden,
+                      lineCap: style.borderCapStyle,
+                      lineDash: style.borderDash,
+                      lineDashOffset: style.borderDashOffset,
+                      lineJoin: style.borderJoinStyle,
+                      lineWidth: style.borderWidth,
+                      strokeStyle: style.borderColor,
+                      pointStyle: style.pointStyle,
+                      rotation: style.rotation,
+                      textAlign: style.textAlign,
+                      borderRadius: 0,
+                    };
+                  });
+                }
+                return [];
+              },
+            },
           },
           tooltip: {
             enabled: false,
           },
           doughnutlabel: {
-            // Utilisation du plugin pour afficher les libellés personnalisés
             labels: [
               {
-                text: `${(
-                  (available / (available + unavailable)) *
-                  100
-                ).toFixed(2)}%`, // Calcul du pourcentage des produits disponibles
+                text: `${((available / (available + unavailable)) * 100).toFixed(2)}%`,
                 font: {
                   size: "30",
                 },
@@ -80,14 +94,17 @@ function PercentageChart() {
       percentageChart.destroy();
     };
   }, [available, unavailable]);
+
   return <canvas ref={chartRef} />;
 }
 
-// un tableau d'utilisateurs qui ont voté
+
+
+
 const userVotes = [
-  { username: "user1" },
-  { username: "user2" },
-  // ...
+  { username: "user1", comment: "Good Product" },
+  { username: "user2", comment: "Good Service" },
+  // Add more static user votes as needed
 ];
 
 function Dashboard() {
@@ -114,22 +131,19 @@ function Dashboard() {
   const histogramChartRef = useRef(null);
 
   useEffect(() => {
+    const staticLineData = {
+      daily: { "2024-06-12": 50, "2024-06-13": 70, "2024-06-14": 60, "2024-06-15": 90, "2024-06-16": 80 }
+    };
+
     const ctx = chartRef.current.getContext("2d");
     const lineChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: [
-          "Jour 1",
-          "Jour 2",
-          "Jour 3",
-          "Jour 4",
-          "Jour 5",
-          "Jour 6",
-          "Jour 7",
-        ],
+        labels: Object.keys(staticLineData.daily),
         datasets: [
           {
             label: "Total Income",
+            data: Object.values(staticLineData.daily),
             borderColor: "#647adf",
             backgroundColor: "rgba(147, 112, 219, 0.1)",
             borderWidth: 3,
@@ -184,13 +198,13 @@ function Dashboard() {
     let filteredData = [];
     switch (filterType) {
       case "weekly":
-        filteredData = [1, 7, 14, 21, 28];
+        filteredData = [20, 40, 60, 80, 100];
         break;
       case "monthly":
-        filteredData = [20, 25, 10, 15, 8];
+        filteredData = [100, 200, 300, 400, 500];
         break;
       case "annually":
-        filteredData = [5, 30, 5, 7, 8];
+        filteredData = [500, 400, 300, 200, 100];
         break;
       default:
         filteredData = [0, 50, 100, 150, 200];
@@ -200,14 +214,14 @@ function Dashboard() {
     const histogramChart = new Chart(ctx, {
       type: "bar",
       data: {
-        labels: [" DEL", "Conf", "Ret", "Can", "Rec"],
+        labels: ["DEL", "Conf", "Ret", "Can", "Rec"],
         datasets: [
           {
             label: "Sales",
             data: filteredData,
             backgroundColor: "#647adf",
-            borderWidth: 1, // Changé l'épaisseur des barres à 1
-            borderSkipped: "end", // Ajouté cette propriété pour que les barres ne débordent pas sur les bords
+            borderWidth: 1,
+            borderSkipped: "end",
           },
         ],
       },
@@ -231,11 +245,12 @@ function Dashboard() {
       histogramChart.destroy();
     };
   }, [filterType]);
-  const confirmOrderHours = [10, 13, 16, 19]; // Heures de confirmation des commandes pour chaque jour
+
+  const confirmOrderHours = [10, 13, 16, 19];
 
   const getConfirmationBarHeight = (day, hour) => {
-    const orderConfirmationHour = hour; // Heure de confirmation souhaitée
-    const lineHeight = 40; // Hauteur de la barre
+    const orderConfirmationHour = hour;
+    const lineHeight = 40;
     return day.getHours() === orderConfirmationHour ? lineHeight : 0;
   };
 
@@ -248,12 +263,7 @@ function Dashboard() {
       <Link to="/dashboard">
         <div className="welcome-back-container">
           <div className="welcome-back-text">Welcome back!</div>
-          <img
-            src={logoavatar}
-            alt="Welcome"
-            className="welcome-back-logo"
-          />{" "}
-          {/* Nouvel icône */}
+          <img src={logoavatar} alt="Welcome" className="welcome-back-logo" />
         </div>
       </Link>
       <div className="calendar-container">
@@ -265,10 +275,7 @@ function Dashboard() {
         </div>
         <div className="calendar">
           {daysArray.map((day, index) => (
-            <div
-              className={`date ${index === 3 ? "selected" : ""}`}
-              key={index}
-            >
+            <div className={`date ${index === 3 ? "selected" : ""}`} key={index}>
               <div className="day">{day.getDate()}</div>
               <div className="day-text">
                 {day.toLocaleString("default", { weekday: "short" })}
@@ -288,24 +295,15 @@ function Dashboard() {
           ))}
         </div>
       </div>
-      <div
-        className="chart-container"
-        style={{ width: "268px", height: "320px" }}
-      >
+      <div className="chart-container" style={{ width: "268px", height: "320px" }}>
         <canvas ref={chartRef} id="lineChart" width="320" height="320"></canvas>
       </div>
       <div className="centered-chart-container">
-        <div
-          className="stock-chart-container stock-content"
-          style={{ width: "119px", height: "320px" }}
-        >
+        <div className="stock-chart-container stock-content" style={{ width: "119px", height: "320px",padding:"35px" }}>
           <div className="stock-chart-title">Products Availability:</div>
-          <PercentageChart available={totalProducts} />
+          <PercentageChart available={20} unavailable={10} />
         </div>
-        <div
-          className="histogram-chart-container histogram-content"
-          style={{ width: "270px", height: "290px" }}
-        >
+        <div className="histogram-chart-container histogram-content" style={{ width: "270px", height: "290px" }}>
           <div className="histogram-chart-filters">
             <label htmlFor="filter"></label>
             <select
@@ -320,12 +318,7 @@ function Dashboard() {
             </select>
           </div>
           <div className="histogram-chart-title">Order Status</div>
-          <canvas
-            ref={histogramChartRef}
-            id="histogramChart"
-            width="300"
-            height="300"
-          ></canvas>
+          <canvas ref={histogramChartRef} id="histogramChart" width="300" height="300"></canvas>
         </div>
       </div>
       <div className="customer-review-container customer-review-content">
@@ -335,6 +328,7 @@ function Dashboard() {
             {userVotes.map((user, index) => (
               <div className="user-vote" key={index}>
                 <p>{user.username}</p>
+                <p>{user.comment}</p>
               </div>
             ))}
           </div>

@@ -42,6 +42,49 @@ exports.updateSaleStatus = async (req, res) => {
   }
 };
 
+exports.getSalesStatsByUser = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const sales = await Sale.find({ UserId: userId });
+
+    if (sales.length === 0) {
+      return res.status(404).json({ message: "No sales found for this user" });
+    }
+
+    const groupByTime = (sales, timeUnit) => {
+      return sales.reduce((acc, sale) => {
+        const timeKey = new Date(sale.timestamp).toISOString().slice(0, timeUnit);
+        const quantityKey = sale.quantity;
+
+        if (!acc[timeKey]) {
+          acc[timeKey] = {};
+        }
+        if (!acc[timeKey][quantityKey]) {
+          acc[timeKey][quantityKey] = 0;
+        }
+
+        acc[timeKey][quantityKey]++;
+        return acc;
+      }, {});
+    };
+
+    const dailySales = groupByTime(sales, 10); // YYYY-MM-DD
+    const weeklySales = groupByTime(sales, 7); // YYYY-WW (ISO week date)
+    const monthlySales = groupByTime(sales, 7); // YYYY-MM
+    const yearlySales = groupByTime(sales, 4); // YYYY
+
+    res.status(200).json({
+      daily: dailySales,
+      weekly: weeklySales,
+      monthly: monthlySales,
+      annually: yearlySales,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching sales data", error });
+  }
+};
+
 exports.getSalesSummary = async (req, res) => {
   try {
     const summary = await Sale.aggregate([

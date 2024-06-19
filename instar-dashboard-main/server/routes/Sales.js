@@ -11,6 +11,8 @@ router.get("/stats/summary", saleController.getSalesSummary);
 router.get("/stats/delivered-summary", saleController.getDeliveredSalesSummary);
 router.get("/totalAvailableProducts", saleController.getTotalAvailableProducts);
 
+router.get('/calculations/:userId', saleController.getSalesStatsByUser);
+
 router.post("/create", async (req, res) => {
   try {
     const { productId, fournisseurId, UserId, quantity } = req.body;

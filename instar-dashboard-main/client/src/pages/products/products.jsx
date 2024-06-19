@@ -14,7 +14,7 @@ const renderStars = (numStars) => {
   );
 };
 
-const Products = ({user}) => {
+const Products = () => {
   const [products, setProducts] = useState([]);
   const [fournisseurs, setFournisseurs] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -28,6 +28,7 @@ const Products = ({user}) => {
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [productToEdit, setProductToEdit] = useState(null);
   const [productToDelete, setProductToDelete] = useState(null);
+  const [user, setUser] = useState(null);
   const [newProduct, setNewProduct] = useState({
     name: "",
     description: "",
@@ -39,6 +40,20 @@ const Products = ({user}) => {
     image3DInfo: [],
     fournisseur: "",
   });
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const uid = localStorage.getItem("Uid");
+    if (token) {
+      axios.get(`/api/users/${uid}`)
+        .then((response) => {
+          setUser(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching user by ID:", error);
+        });
+    }
+  }, []);
 
   useEffect(() => {
     fetchProducts();
@@ -190,7 +205,7 @@ const Products = ({user}) => {
   const endIndex = Math.min(startIndex + pageSize, filteredProducts.length);
 
   return (
-    user.role ==='admin' ? (<div>
+    <div>
       <span className="title">Products</span>
       <div className="search">
         <input
@@ -467,85 +482,7 @@ const Products = ({user}) => {
           </div>
         </div>
       )}
-    </div>) : (<div>
-      <span className="title">Products</span>
-      <div className="search">
-        <input
-          type="text"
-          placeholder="Search"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <RiSearch2Line className="iicon" />
-      </div>
-      <div>
-        <button className="filter-button" onClick={toggleFilterOptions}>
-          Filter {showFilterOptions ? "▲" : "▼"}
-        </button>
-        {showFilterOptions && (
-          <ul className="filter-options">
-            <li onClick={() => handleFilterChange("All")}>Show All</li>
-            <li onClick={() => handleFilterChange("In Stock")}>In Stock</li>
-            <li onClick={() => handleFilterChange("Out of Stock")}>
-              Out of Stock
-            </li>
-          </ul>
-        )}
-      </div>
-      <div className="background">
-        <div className="tablew">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Id code</th>
-                <th>Product Name</th>
-                <th>Supplier</th>
-                <th>Price</th>
-                <th>Category</th>
-                <th>Status</th>
-                <th>Reviews</th>
-                <th>Quantity</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredProducts.slice(startIndex, endIndex).map((product) => {
-                const supplier = fournisseurs.find(
-                  (f) => f._id === product.fournisseur
-                );
-                return (
-                  <tr key={product._id}>
-                    <td>#{product._id.toString().slice(-7).toUpperCase()}</td>
-                    <td>{product.name}</td>
-                    <td>{supplier ? supplier.name : "Unknown"}</td>
-                    <td>{product.price} DT</td>
-                    <td>{product.category}</td>
-                    <td>
-                      <span
-                        className="status"
-                        style={{
-                          backgroundColor:
-                            product.quantity > 0 ? "#47aacd" : "#D55500",
-                        }}
-                      >
-                        {product.quantity > 0 ? "In Stock" : "Out of Stock"}
-                      </span>
-                    </td>
-                    <td>{renderStars(product.rating)}</td>
-                    <td>{product.quantity}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div className="pagination">
-        <button onClick={goToPreviousPage}>Previous</button>
-        <span>{currentPage}</span>
-        <button onClick={goToNextPage}>Next</button>
-      </div>
-
-    </div>)
+    </div>
   );
 };
 
